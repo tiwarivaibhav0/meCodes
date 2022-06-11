@@ -1,0 +1,52 @@
+PATTERN OF SPIRAL MATRIX -6
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Write C++ code here
+    int m;
+    cin >>m;
+    int n=m*2-1;
+    
+    int **arr=new int*[n];
+    for(int i=0;i<n;i++)
+      arr[i]=new int [n];
+      
+      
+      int top=0,bottom=n-1,left=0,right=n-1;
+      int dir=0;
+      while(top<=bottom&&left<=right){
+          if(dir==0){
+              for(int j=left;j<=right;j++)
+                 arr[top][j]=m-left;
+                 top++;
+          }
+          if(dir==1){
+              for(int j=top;j<=bottom;j++)
+                  arr[j][right]=m-left;
+                 right--;
+          }
+          if(dir==2){
+              for(int j=right;j>=left;j--)
+              arr[bottom][j]=m-left;
+                 bottom--;
+          }\
+          if(dir==3){
+              for(int j=bottom;j>=top;j--)
+                  arr[j][left]=m-left;
+                 left++;
+          }
+        dir=(dir+1)%4;
+      }
+      for(int i=0;i<n;i++){
+          for(int j=0;j<n;j++){
+              cout<<arr[i][j]<<" ";
+              
+          }
+          cout<<'\n';
+      }
+
+    return 0;
+}
